@@ -6,13 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "BBQ" %></title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_pack_tag "application" %>
+    <%= javascript_pack_tag "application" %>
 
-    <script type="text/javascript" charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <%= link_to "BBQ!", root_path, class: "navbar-brand" %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#">Pricing</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
@@ -30,7 +46,7 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="container">
       <div class="row">
@@ -41,11 +57,19 @@
         <div class="col-lg-3">
           <div class="well sidebar-nav">
             <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Active</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
