@@ -7,6 +7,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'puma', '~> 4.1'
 gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'devise', '4.7.2'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
