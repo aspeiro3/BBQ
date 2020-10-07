@@ -2,15 +2,19 @@
 <% errors = model.errors %>
 
 <% if errors.any? %>
-  <div class="alert alert-danger">
-    <div class="lead buffer-bottom">
-      В вашей форме <%= errors.count %> ошибок
-    </div>
+  <div class="mt-4 alert alert-danger alert-dismissible fade show" role="alert">
+    <h3>
+      В вашей форме <%= errors.count %> <%= declension_of_words(errors.count, 'ошибка', 'ошибки', 'ошибок') %>
+    </h3>
 
     <ul>
       <% errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 <% end %>
