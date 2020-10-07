@@ -8,30 +8,30 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_pack_tag "application" %>
     <%= javascript_pack_tag "application" %>
-
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
 
-      <%= link_to "BBQ!", root_path, class: "navbar-brand" %>
+        <%= link_to "BBQ!", root_path, class: "navbar-brand pl-sm-3 pl-lg-0" %>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <% if user_signed_in? %>
-            <li class="mr-2"><%= link_to 'Профиль', current_user %></li>
-            <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
-          <% else %>
-            <li class="mr-2"><%= link_to 'Войти', new_user_session_path %></li>
-            <li><%= link_to 'Зарегистрироваться', new_user_registration_path %></li>
-          <% end %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class=" float-right mr-4"><%= link_to 'Профиль', current_user %></li>
+              <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+              <li class="mr-4"><%= link_to 'Войти', new_user_session_path %></li>
+              <li><%= link_to 'Зарегистрироваться', new_user_registration_path %></li>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
     <div class="container">
       <div class="row">
@@ -40,11 +40,6 @@
           <%= yield %>
         </div>
       </div>
-
-      <footer>
-        <p>&copy; Company 2020</p>
-      </footer>
-
-    </div> <!-- /container -->
+    </div>
   </body>
 </html>

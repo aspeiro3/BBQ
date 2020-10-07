@@ -1,0 +1,27 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="mt-4 col-sm-12 col-md-12 col-lg-8 col-xl-6">
+    <h2>Изменить пароль</h2>
+
+    <form>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Новый пароль</label>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+        <small class="form-text text-muted">не менее <%= @minimum_password_length %> символов</small>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Подтверждение пароля</label>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Изменить пароль</button>
+    </form>
+
+    <div class="mt-4">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+<% end %>

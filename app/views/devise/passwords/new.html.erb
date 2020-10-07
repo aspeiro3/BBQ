@@ -1,0 +1,21 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="mt-4 col-sm-12 col-md-12 col-lg-8 col-xl-6">
+    <h2>Забыли пароль?</h2>
+
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Отправить инструкцию по сбросу пароля</button>
+    </form>
+
+    <div class="mt-4">
+      <%= render "devise/shared/links" %>
+    </div>
+
+  </div>
+<% end %>
