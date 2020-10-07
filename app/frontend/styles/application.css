@@ -64,3 +64,7 @@
 .text-color {
   color: aliceblue;
 }
+
+nav .navbar-nav li a{
+  color: rgb(29, 29, 29) !important;
+  }
