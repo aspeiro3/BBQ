@@ -6,6 +6,14 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     @user = User.find(params[:id])
+
+    @user_past_events = []
+
+    @user.events.all.each do |item|
+      if item.datetime < Time.now
+        @user_past_events << item
+      end
+    end
   end
 
   # GET /users/1/edit
@@ -28,7 +36,7 @@ class UsersController < ApplicationController
   def set_current_user
     @user = current_user
   end
-  
+
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name, :email)

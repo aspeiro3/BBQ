@@ -1,4 +1,4 @@
-<% if event.datetime >= Time.now %>
+<% @user_past_events.each do |item| %>
   <div class="text-center col-sm-6 col-md-4 mt-2 mb-3">
     <div class="thumbnail magnification">
 
@@ -9,11 +9,11 @@
 
       <div class="thumbnail-inner event-info-inner">
         <div class="text-light">
-          <h3><%= link_to event.title, event_path(event), class: 'stretched-link a-none' %></h3>
+          <h3><%= link_to item.title, event_path(item), class: 'stretched-link a-none' %></h3>
             <h5>
-              <small><%= event.datetime %></small>
+              <small><%= item.datetime %></small>
             </h5>
-            <div class="buffer-both"><%= event.address %></div>
+            <div class="buffer-both"><%= item.address %></div>
         </div>
       </div>
     </div>

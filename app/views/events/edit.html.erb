@@ -1,5 +1,7 @@
-<%= render 'form', event: @event %>
+<h2>Редактирование события</h2>
 
-<div class="mt-4">
-  <%= link_to 'На главную', events_path %>
+<div class="row">
+  <div class="col-md-8 col-lg-6 col-xl-5 buffer-top">
+    <%= render 'form', event: @event %>
+  </div>
 </div>

@@ -1,18 +1,18 @@
 <div class="event">
-  <div class="event-info row">
-    <div class="col-md-12 thumbnail mt-3">
+  <div class="event-info row m-0">
+    <div class="col-md-12 thumbnail">
 
       <%= content_tag 'div', '', class: 'event-background',
         style: "background-image: url(#{asset_pack_path('media/images/event.jpg')})" %>
 
       <div class="event-info-inner row">
         <div class="col-md-6">
-          <div class="event-description">
-            <h1><%= @event.title %></h1>
-            <h3><%= @event.datetime %></h3>
+          <div class="event-description p-2">
+            <h1 class="text-info"><%= @event.title %></h1>
+            <h5><%= @event.datetime %></h5>
             <h3><small><%= link_to @event.address,
                 "https://yandex.ru/maps/?text=#{@event.address}" %></small></h3>
-            <p><%= @event.description %></p>
+            <p class="m-0"><%= @event.description %></p>
           </div>
 
           <% if current_user_can_edit?(@event) %>

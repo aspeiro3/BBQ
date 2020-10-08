@@ -49,3 +49,14 @@
   width: 100%;
   height: 400px;
 }
+
+.a-none {
+  text-decoration: none !important;
+  color: #17a2b8 !important;
+}
+
+.magnification:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
