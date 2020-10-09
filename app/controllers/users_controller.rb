@@ -8,10 +8,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @user_past_events = []
+    @user_upcoming_events = []
 
     @user.events.all.each do |item|
       if item.datetime < Time.now
         @user_past_events << item
+      else
+        @user_upcoming_events << item
       end
     end
   end
@@ -24,7 +27,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: I18n.t('controllers.events.updated') }
       else
         format.html { render :edit }
       end

@@ -11,7 +11,7 @@
         <div class="text-light">
           <h3><%= link_to event.title, event_path(event), class: 'stretched-link a-none' %></h3>
             <h5>
-              <small><%= event.datetime %></small>
+              <small><%= l event.datetime, format: :long %></small>
             </h5>
             <div class="buffer-both"><%= event.address %></div>
         </div>

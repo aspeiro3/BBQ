@@ -14,12 +14,17 @@
 
       <% if @user.events.any? %>
         <h3>Организовал:</h3>
+
+        <% if @user_upcoming_events.size == 0  %>
+          <p class="buffer-top mb-4">У пользователя пока нет предстоящих мероприятий</p>
+        <% end %>
+
         <div class="row">
           <%= render partial: 'events/event', collection: @user.events.all.order(datetime: :asc) %>
         </div>
 
         <% if @user_past_events.size > 0 %>
-          <h3>Прошедшие события:</h3>
+          <h3>Прошедшие мероприятия:</h3>
           <div class="row">
             <%= render partial: 'events/past_events' %>
           </div>

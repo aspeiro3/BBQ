@@ -9,7 +9,7 @@
         <div class="col-md-6">
           <div class="event-description p-2">
             <h1 class="text-info"><%= @event.title %></h1>
-            <h5><%= @event.datetime %></h5>
+            <h5><%= l @event.datetime, format: :long %></h5>
             <h3><small><%= link_to @event.address,
                 "https://yandex.ru/maps/?text=#{@event.address}" %></small></h3>
             <p class="m-0"><%= @event.description %></p>
@@ -17,8 +17,11 @@
 
           <% if current_user_can_edit?(@event) %>
             <div class="buffer-top mb-2">
+              
               <%= link_to 'Изменить', edit_event_path(@event),
                 class: 'btn btn-primary' %>
+
+              <%= link_to 'Удалить', @event, method: :delete, data: {confirm: "Вы уверены?"}, class: 'btn btn-light ml-3 pl-3 pr-3' %>
             </div>
           <% end %>
         </div>
