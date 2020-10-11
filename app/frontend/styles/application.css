@@ -72,3 +72,7 @@ nav .navbar-nav li a{
 .opacity {
   opacity: 0.95;
 }
+
+.effect:hover {
+  color: rgb(63, 38, 206) !important;
+}

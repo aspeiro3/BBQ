@@ -17,7 +17,6 @@ module ApplicationHelper
         end
       )
     end
-
     return
   end
 
@@ -27,5 +26,9 @@ module ApplicationHelper
 #    else
       asset_pack_path('media/images/user.png')
 #    end
+  end
+
+  def fa_icon(icon_class)
+    content_tag 'span', '', class: "fa fa-#{icon_class}"
   end
 end
