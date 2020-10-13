@@ -1,19 +1,29 @@
-<div class="buffer-bottom">
-  <p><%= comment.body %></p>
-  <p>
-    <span>
-      <% if comment.user.present? %>
-        <%= render partial: 'users/user', object: comment.user %>
-      <% else %>
-        <em><strong><%= comment.user_name %></strong></em>
-      <% end %>
-    </span>
-    <em><%= l comment.created_at, format: :long %></em>
-    <% if current_user_can_edit?(comment) %>
-      <%= link_to(
-            fa_icon('trash'), event_comment_path(comment.event, comment),
-            method: :delete, data: {confirm: t('.destroy_confirm')}
-        ) %>
-    <% end %>
-  </p>
+
+<div class="container">
+  <div class="row buffer-bottom border rounded shadow-sm p-3">
+    <div class="col-md-4 p-0">
+      <span>
+        <% if comment.user.present? %>
+          <%= render partial: 'users/user', object: comment.user %>
+          <% if current_user_can_edit?(comment) %>
+            <%= link_to(
+                  fa_icon('trash'), event_comment_path(comment.event, comment),
+                  method: :delete, data: {confirm: t('.destroy_confirm')}
+              ) %>
+          <% end %>
+        <% else %>
+          <%= image_tag user_avatar(@user), class: 'img-icon mt-2' %>
+          <em>
+            <strong><%= comment.user_name %></strong>
+          </em>
+        <% end %>
+      </span><br>
+
+      <small><%= l comment.created_at, format: :long %></small>
+    </div>
+
+    <div class="col-md-8 border rounded shadow-sm background-color">
+      <p class="m-0"><%= comment.body %></p>
+    </div>
+  </div>
 </div>

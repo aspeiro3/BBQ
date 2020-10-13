@@ -1,5 +1,5 @@
 <div class="event">
-  <div class="event-info row m-0">
+  <div class="event-info row m-0 mb-1 rounded shadow">
     <div class="col-md-12 thumbnail">
 
       <%= content_tag 'div', '', class: 'event-background',
@@ -30,40 +30,74 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8">
-      <div class="event-comments buffer-top">
+    <div class="mt-3 col-sm-12 col-md-12 col-lg-5">
+      <div class="border rounded p-3 shadow background-color">
+        <div class="event-owner text-center">
 
+          <% unless current_user_can_edit?(@event) %>
+            <h5>Организатор</h5>
+            <p><%= render partial: 'users/user', object: @event.user %></p>
+          <% end %>
+
+        </div>
+        <div class="event-subscriptions">
+          <div id="container">
+            <div class="rounded text-center" id="something-else">
+              <h5 class="m-0 pt-2">Пойдут:</h5>
+            </div>
+            <div class="p-2" id="overflow">
+
+              <% if @event.subscriptions.count == 0 %>
+                <div class="text-center">
+                  Желающих пока нет
+                  <br>
+                  <%= image_tag asset_pack_path('media/images/panda.jpg'), class: 'img-icon-max' %>
+                  <br>
+                  <% if current_user_can_edit?(@event) %>
+                    Не вешай нос, всё ещё впереди :)
+                  <% else %>
+                    Будь первым! :)
+                  <% end %>
+                </div>
+              <% else %>
+                <%= render partial: 'subscriptions/subscription',
+                collection: @event.subscriptions.except(@new_subscription).order(created_at: :desc) %>
+              <% end %>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="event-subscription-form text-center mt-3">
+          <div>
+            <%= render partial: 'subscriptions/form', locals: {
+              subscription: @new_subscription || @event.subscriptions.build
+            } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-comments buffer-top text-center">
         <%= render partial: 'comments/form', locals: {comment: @new_comment || @event.comments.build} %>
-
-        <div class="buffer-both">
-          <%= render partial: 'comments/comment',
-            collection: @event.comments.except(@new_comment) %>
-        </div>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="event-owner">
-        <h4>Зовет:</h4>
-          <p><%= render partial: 'users/user', object: @event.user %></p>
-      </div>
-      <div class="event-subscriptions">
-        <h4>Пойдут:</h4>
-        <div>
-          <p>
-          <%= render partial: 'subscriptions/subscription',
-            collection: @event.subscriptions.except(@new_subscription) %>
-          </p>
-        </div>
-      </div>
-      <div class="event-subscription-form">
-        <h4>Я пойду:</h4>
-        <div>
-          <%= render partial: 'subscriptions/form', locals: {
-            subscription: @new_subscription || @event.subscriptions.build
-          } %>
+    <div class="col-sm-12 col-md-12 col-lg-7">
+      <div class="border rounded pl-3 pr-3 mt-3 shadow">
+        <div class="event-comments buffer-top">
+          <div class="buffer-both">
+
+            <% if @event.comments.count == 0 %>
+              <h4 class="text-center mb-3">Комментариев пока нет</h4>
+            <% else %>
+              <h4 class="text-center mb-3">Комментарии к событию</h4>
+            <% end %>
+
+            <%= render partial: 'comments/comment',
+              collection: @event.comments.except(@new_comment).order(created_at: :desc) %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </div>

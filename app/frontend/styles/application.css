@@ -40,6 +40,11 @@
   border-radius: 50%;
 }
 
+.img-icon-max {
+  height: 90px;
+  width: auto;
+}
+
 /* Thumbnails for events/index */
 .thumbnail {
   position: relative;
@@ -74,5 +79,31 @@ nav .navbar-nav li a{
 }
 
 .effect:hover {
-  color: rgb(63, 38, 206) !important;
+  color: #0d81ff !important;
 }
+
+#container {
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  height: 200px;
+  padding-top: 40px;
+}
+#something-else {
+  background-color: #f8f9fa;
+  height: 40px;
+  width: 100%;
+  margin-top:-40px;
+}
+#overflow {
+  border-radius: 0px 0px 5px 5px;
+  border: 1px solid #dee2e6;
+  width:100%;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.background-color {
+  background-color: #f8f9fa60;
+}
+

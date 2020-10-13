@@ -24,11 +24,15 @@ module ApplicationHelper
 #    if user.avatar_url.present?
 #      user.avatar_url
 #    else
-      asset_pack_path('media/images/user.png')
+      if user.present?
+        asset_pack_path('media/images/user.png')
+      else
+        asset_pack_path('media/images/unknown_user.jpg')
+      end
 #    end
   end
 
   def fa_icon(icon_class)
-    content_tag 'span', '', class: "fa fa-#{icon_class}"
+    content_tag 'span', '', class: "fa fa-#{icon_class} ml-2"
   end
 end
