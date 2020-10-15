@@ -1,4 +1,6 @@
 class Subscription < ApplicationRecord
+  include ActiveModel::Validations
+
   belongs_to :event
   belongs_to :user, optional: true
 
@@ -17,9 +19,12 @@ class Subscription < ApplicationRecord
   # один email может использоваться только один раз (если анонимная подписка)
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
 
-  # один email может использоваться только один раз (если анонимная подписка)
-  validates :user_email, uniqueness: {scope: :user,
-    message: "уже существует. Войдите в учётную запись или укажите свою почту."}, unless: -> { user.present? }
+  # анонимная подписка не будет создана при использовании Email зарегестрированого пользователя
+  validate :subscription_not_created_with_email_registered_user
+
+  def subscription_not_created_with_email_registered_user
+    errors.add(:user_email, I18n.t('models.subscriptions.error')) if User.where(email: user_email).present?
+  end
 
   # Если есть юзер, выдаем его имя,
   # если нет – дергаем исходный метод
