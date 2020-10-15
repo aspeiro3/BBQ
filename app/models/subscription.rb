@@ -20,7 +20,7 @@ class Subscription < ApplicationRecord
   validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
 
   # анонимная подписка не будет создана при использовании Email зарегестрированого пользователя
-  validate :subscription_not_created_with_email_registered_user
+  validate :subscription_not_created_with_email_registered_user, unless: -> { user.present? }
 
   def subscription_not_created_with_email_registered_user
     errors.add(:user_email, I18n.t('models.subscriptions.error')) if User.where(email: user_email).present?
