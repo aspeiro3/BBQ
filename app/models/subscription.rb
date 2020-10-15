@@ -26,6 +26,13 @@ class Subscription < ApplicationRecord
     errors.add(:user_email, I18n.t('models.subscriptions.error')) if User.where(email: user_email).present?
   end
 
+  # запрет подписки на свое событие
+  validate :deny_subscription_to_your_event, if: -> { user.present? }
+
+  def deny_subscription_to_your_event
+    errors.add(:user_email) if Event.find_by(id:event_id).user_id == user_id
+  end
+
   # Если есть юзер, выдаем его имя,
   # если нет – дергаем исходный метод
   def user_name
