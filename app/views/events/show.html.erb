@@ -31,7 +31,7 @@
 
   <div class="row">
     <div class="mt-3 col-sm-12 col-md-12 col-lg-5">
-      <div class="border rounded p-3 shadow background-color">
+      <div class="border rounded p-3 shadow">
         <div class="event-owner text-center">
 
           <% unless current_user_can_edit?(@event) %>
@@ -40,7 +40,7 @@
           <% end %>
 
         </div>
-        <div class="event-subscriptions">
+        <div class="event-subscriptions background-color">
           <div id="container">
             <div class="rounded text-center" id="something-else">
               <h5 class="m-0 pt-2">Пойдут:</h5>
@@ -51,7 +51,7 @@
                 <div class="text-center">
                   Желающих пока нет
                   <br>
-                  <%= image_tag asset_pack_path('media/images/panda.jpg'), class: 'img-icon-max' %>
+                  <%= image_tag asset_pack_path('media/images/panda.png'), class: 'img-icon-max' %>
                   <br>
                   <% if current_user_can_edit?(@event) %>
                     Не вешай нос, всё ещё впереди :)
