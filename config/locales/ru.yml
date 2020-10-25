@@ -7,12 +7,14 @@ ru:
       event: 'Событие'
       comment: 'Комментарий'
       subscription: 'Подписка'
+      photo: 'Фотография'
 
     # Перевод названий аттрибутов моделей
     attributes:
       user:
         email: 'Email'
         name: 'Имя'
+        avatar: 'Аватарка'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
       event:
@@ -26,6 +28,8 @@ ru:
       subscription:
         user_name: 'Имя'
         user_email: 'Email'
+      photo:
+        photo: 'Фотография'
 
   # Перевод сообщений, которые отправляет контроллер
   controllers:
@@ -43,10 +47,18 @@ ru:
       created: 'Вы подписаны на это событие'
       destroyed: 'Участник отписан'
       error: 'Подписка/отписка не сработала'
+    photos:
+      error: 'Что-то не так с фоткой'
+      created: 'Вы добавили фотографию к событию'
+      destroyed: 'Вы удалили фотку'
 
   comments:
     comment:
       destroy_confirm: 'Вы уверены, что хотите удалить этот комментарий?'
+
+  photos:
+    photo:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту фотографию?'
 
   subscriptions:
     subscription:

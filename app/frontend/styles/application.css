@@ -35,7 +35,7 @@
 
 /* Avatars for users & events */
 .img-icon, .img-icon-small {
-  height: 50px;
+  height: 40px;
   width: auto;
   border-radius: 50%;
 }
@@ -107,3 +107,6 @@ nav .navbar-nav li a{
   background-color: #f8f9fa60;
 }
 
+.width-img {
+  width: 150px !important;
+}

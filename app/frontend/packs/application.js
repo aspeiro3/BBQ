@@ -12,3 +12,11 @@ import '../styles/application.scss'
 //
 const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(function(){
+  $('.bxslider').bxSlider({
+    mode: 'fade',
+    captions: true,
+    slideWidth: 600
+  });
+});

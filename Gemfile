@@ -11,6 +11,8 @@ gem 'devise', '4.7.2'
 gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'russian'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
