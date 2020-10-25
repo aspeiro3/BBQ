@@ -7,6 +7,9 @@
     <p class="buffer-top">
       <%= link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-outline-secondary' %>
     </p>
+    <div class="buffer-both">
+      <%= link_to 'Предложить новое событие', new_event_path, class: 'btn btn-success' %>
+    </div>
   <% end %>
 
   <div class="row">
